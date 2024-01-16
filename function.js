@@ -30,7 +30,7 @@ window.function = async function(apikey, recherche) {
     console.log("CAS Numbers:", casNumbers);
 
     const jsonString = JSON.stringify(casNumbers); // Convert the object to a JSON string
-    return casNumbers;
+    return jsonString;
   } catch (error) {
     console.error("Error:", error);
     return JSON.stringify({ error: error.message });
@@ -54,8 +54,10 @@ function extractCAS(jsonData) {
       }
     });
   }
+const casArray = Array.from(casSet);
 
-  return Array.from(casSet);
+  // Return the first element of the array as text
+  return casArray.length > 0 ? casArray[0] : "";
 }
 
 function extractCASold(jsonData) {
