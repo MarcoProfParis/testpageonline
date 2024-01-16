@@ -30,18 +30,20 @@ function extractCAS(jsonData) {
   const casNumbers = [];
 
   jsonData.organic.forEach(item => {
-    // Use a regular expression to match CAS numbers
-    const matches = item.snippet.match(/\b\d{2,7}-\d{1}-\d\b/g);
-    if (matches) {
-      casNumbers.push(...matches);
+    // Use a regular expression to match CAS numbers in title and snippet
+    const titleMatches = item.title.match(/\b\d{2,7}-\d{1}-\d\b/g);
+    const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{1}-\d\b/g);
+
+    if (titleMatches) {
+      casNumbers.push(...titleMatches);
+    }
+
+    if (snippetMatches) {
+      casNumbers.push(...snippetMatches);
     }
   });
 
-  return {
-  "casNumbers": [
-    "71-36-3"
-  ]
-};
+  return casNumbers;
 }
 
 
