@@ -20,11 +20,24 @@ var requestOptions = {
 const response = await fetch(`https://google.serper.dev/search`, requestOptions);
   
   const data = await response.json();
-  const jsonString = JSON.stringify(data); // Convert the object to a JSON string
+  const casNumbers = extractCAS(jsonData);
+  const jsonString = JSON.stringify(casNumbers); // Convert the object to a JSON string
     return jsonString;
   
 }
 
+function extractCAS(jsonData) {
+  const casNumbers = [];
 
+  jsonData.organic.forEach(item => {
+    // Use a regular expression to match CAS numbers
+    const matches = item.snippet.match(/\b\d{2,7}-\d{1}-\d\b/g);
+    if (matches) {
+      casNumbers.push(...matches);
+    }
+  });
+
+  return casNumbers;
+}
 
 
