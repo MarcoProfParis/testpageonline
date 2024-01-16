@@ -20,7 +20,7 @@ var requestOptions = {
 const response = await fetch(`https://google.serper.dev/search`, requestOptions);
   
   const data = await response.json();
-  const casNumbers = extractCAS(jsonData);
+  const casNumbers = extractCAS(Data);
   const jsonString = JSON.stringify(casNumbers); // Convert the object to a JSON string
     return jsonString;
   
