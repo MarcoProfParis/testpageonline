@@ -30,7 +30,7 @@ window.function = async function(apikey, recherche) {
     console.log("CAS Numbers:", casNumbers);
 
     const jsonString = JSON.stringify(casNumbers); // Convert the object to a JSON string
-    return jsonString;
+    return casNumbers;
   } catch (error) {
     console.error("Error:", error);
     return JSON.stringify({ error: error.message });
