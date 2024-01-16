@@ -42,8 +42,8 @@ function extractCAS(jsonData) {
 
   if (jsonData && jsonData.organic && Array.isArray(jsonData.organic)) {
     jsonData.organic.forEach(item => {
-      const titleMatches = item.title.match(/\b\d{2,7}-\d{1}-\d\b/g);
-      const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{1}-\d\b/g);
+      const titleMatches = item.title.match(/\b\d{2,7}-\d{2}-\d\b/g);
+      const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{2}-\d\b/g);
 
       if (titleMatches) {
         casNumbers.push(...titleMatches);
