@@ -6,7 +6,8 @@ myHeaders.append("Content-Type", "application/json");
 
 
 var raw = JSON.stringify({
-  "q": recherche.value
+  "q": recherche.value,
+  "num":3
 });
 
 var requestOptions = {
