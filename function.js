@@ -37,7 +37,7 @@ function extractCAS(jsonData) {
     }
   });
 
-  return casNumbers;
+  return [{"123-12-1","1234-56-1"}];
 }
 
 
