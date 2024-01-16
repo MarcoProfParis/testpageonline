@@ -54,10 +54,7 @@ function extractCAS(jsonData) {
       }
     });
   }
-const casArray = Array.from(casSet);
-
-  // Return the first element of the array as text
-  return casArray.length > 0 ? casArray[0] : "";
+  return Array.from(casSet);
 }
 
 function extractCASold(jsonData) {
