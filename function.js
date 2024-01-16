@@ -38,6 +38,27 @@ window.function = async function(apikey, recherche) {
 };
 
 function extractCAS(jsonData) {
+  const casSet = new Set();
+
+  if (jsonData && jsonData.organic && Array.isArray(jsonData.organic)) {
+    jsonData.organic.forEach(item => {
+      const titleMatches = item.title.match(/\b\d{2,7}-\d{1}-\d\b/g);
+      const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{1}-\d\b/g);
+
+      if (titleMatches) {
+        titleMatches.forEach(cas => casSet.add(cas));
+      }
+
+      if (snippetMatches) {
+        snippetMatches.forEach(cas => casSet.add(cas));
+      }
+    });
+  }
+
+  return Array.from(casSet);
+}
+
+function extractCASold(jsonData) {
   const casNumbers = [];
 
   if (jsonData && jsonData.organic && Array.isArray(jsonData.organic)) {
