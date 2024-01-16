@@ -6,7 +6,7 @@ myHeaders.append("Content-Type", "application/json");
 
 
 var raw = JSON.stringify({
-  "q": "Quel est le numéro de CAS du Butanol"
+  "q": recherche.value
 });
 
 var requestOptions = {
