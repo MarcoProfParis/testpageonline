@@ -1,12 +1,12 @@
 
 
 window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
-if (QUERYSTRING.value === undefined) return "23En attente de QUERYSTRING";
+if (QUERYSTRING.value === undefined) return "4En attente de QUERYSTRING";
     const headers = {
         'X-CMC_PRO_API_KEY': APIKEY.value,
         'Accept': 'application/json'
     };
-consol.log("header ",headers);
+console.log("header ",headers);
     // Constructing URL with query parameters
     const url = new URL(ENDPOINT.value);
 const QUERY = QUERYSTRING.value;
@@ -19,7 +19,7 @@ const QUERY = QUERYSTRING.value;
             method: 'GET',
             headers: headers
         });
-
+console.log("response ",response);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
