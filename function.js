@@ -1,7 +1,7 @@
 window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
     if (QUERYSTRING.value === undefined) {
-        console.log("Waiting for QUERYSTRING");
-        return "Waiting for QUERYSTRING";
+        console.log("2Waiting for QUERYSTRING");
+        return "2Waiting for QUERYSTRING";
     }
 
     console.log("API Key:", APIKEY.value);
