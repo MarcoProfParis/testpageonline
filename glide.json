@@ -1,7 +1,7 @@
 [{
   "kind": "column",
-  "name": "Rechercher numéro de CAS",
-  "description": "Moteur de recherche de numéro de CAS",
+  "name": "coin market",
+  "description": "coin market",
   "author": "Marc Olivier Reula",
   "params": [
     {
@@ -15,8 +15,8 @@
       "type": "string"
     },
     {
-      "name": "QUERY",
-      "displayName": "QUERY",
+      "name": "QUERYSTRING",
+      "displayName": "QUERYSTRING",
       "type": "string"
     }
   ],
