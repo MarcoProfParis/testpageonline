@@ -1,79 +1,31 @@
-window.function = async function(apikey, recherche) {
-  try {
-    var myHeaders = new Headers();
-    let apikeyvalue = apikey.value;
-    myHeaders.append("X-API-KEY", `${apikeyvalue}`);
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      "q": recherche.value,
-      "num": 3
-    });
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
+window.function = async function(APIKEY, ENDPOINT, QUERY) {
+    const headers = {
+        'X-CMC_PRO_API_KEY': APIKEY,
+        'Accept': 'application/json'
     };
 
-    const response = await fetch(`https://google.serper.dev/search`, requestOptions);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    // Constructing URL with query parameters
+    const url = new URL(ENDPOINT);
+    if (QUERY) {
+        Object.keys(QUERY).forEach(key => url.searchParams.append(key, QUERY[key]));
     }
 
-    const data = await response.json();
-    console.log("Received data:", data);
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: headers
+        });
 
-    const casNumbers = extractCAS(data);
-    console.log("CAS Numbers:", casNumbers);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-    const jsonString = JSON.stringify(casNumbers); // Convert the object to a JSON string
-    return jsonString;
-  } catch (error) {
-    console.error("Error:", error);
-    return JSON.stringify({ error: error.message });
-  }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+    }
 };
 
-function extractCAS(jsonData) {
-  const casSet = new Set();
 
-  if (jsonData && jsonData.organic && Array.isArray(jsonData.organic)) {
-    jsonData.organic.forEach(item => {
-      const titleMatches = item.title.match(/\b\d{2,7}-\d{2}-\d\b/g);
-      const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{2}-\d\b/g);
-
-      if (titleMatches) {
-        titleMatches.forEach(cas => casSet.add(cas));
-      }
-
-      if (snippetMatches) {
-        snippetMatches.forEach(cas => casSet.add(cas));
-      }
-    });
-  }
-  return Array.from(casSet);
-}
-
-function extractCASold(jsonData) {
-  const casNumbers = [];
-
-  if (jsonData && jsonData.organic && Array.isArray(jsonData.organic)) {
-    jsonData.organic.forEach(item => {
-      const titleMatches = item.title.match(/\b\d{2,7}-\d{2}-\d\b/g);
-      const snippetMatches = item.snippet.match(/\b\d{2,7}-\d{2}-\d\b/g);
-
-      if (titleMatches) {
-        casNumbers.push(...titleMatches);
-      }
-
-      if (snippetMatches) {
-        casNumbers.push(...snippetMatches);
-      }
-    });
-  }
-
-  return casNumbers;
-}
