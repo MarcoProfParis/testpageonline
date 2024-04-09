@@ -1,13 +1,14 @@
-window.function = async function(APIKEY, ENDPOINT, QUERY) {
+window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
     const headers = {
-        'X-CMC_PRO_API_KEY': APIKEY,
+        'X-CMC_PRO_API_KEY': APIKEY.value,
         'Accept': 'application/json'
     };
 
     // Constructing URL with query parameters
-    const url = new URL(ENDPOINT);
+    const url = new URL(ENDPOINT.value);
+const QUERY = QUERYSTRING.value;
     if (QUERY) {
-        Object.keys(QUERY).forEach(key => url.searchParams.append(key, QUERY[key]));
+        Object.keys(QUERY.value).forEach(key => url.searchParams.append(key, QUERY[key]));
     }
 
     try {
