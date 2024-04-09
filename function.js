@@ -17,16 +17,15 @@ window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
     const url = new URL(ENDPOINT.value);
     const QUERY = QUERYSTRING.value;
     if (QUERY) {
-        console.log("Query Parameters:");
         Object.keys(QUERY).forEach(key => {
-            console.log(key, ":", QUERY[key]);
-            url.searchParams.append(key, QUERY[key]);
+        url.searchParams.append(key, QUERY[key]);
+console.log(" url",url
         });
     }
 
     try {
         console.log("Fetching data from:", url.href);
-        const response = await fetch(url, {
+        const response = await fetch('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC', {
             method: 'GET',
             headers: headers
         });
