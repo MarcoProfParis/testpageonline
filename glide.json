@@ -5,13 +5,18 @@
   "author": "Marc Olivier Reula",
   "params": [
     {
-      "name": "apikey",
-      "displayName": "API KEY Serper",
+      "name": "APIKEY",
+      "displayName": "API KEY",
       "type": "string"
     },
     {
-      "name": "recherche",
-      "displayName": "recherche",
+      "name": "ENDPOINT",
+      "displayName": "ENDPOINT",
+      "type": "string"
+    },
+    {
+      "name": "QUERY",
+      "displayName": "QUERY",
       "type": "string"
     }
   ],
