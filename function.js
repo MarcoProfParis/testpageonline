@@ -1,13 +1,13 @@
 
 
 window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
-if (QUERYSTRING.value === undefined) return "9En attente de QUERYSTRING";
+if (QUERYSTRING.value === undefined) return "10En attente de QUERYSTRING";
 var headers = new Headers();
 let apikeyvalue = APIKEY.value;
 headers.append("X-CMC_PRO_API_KEY", `${apikeyvalue}`);
     headers.append("Accept", "application/json");
 
-console.log("header ",headers.value);
+console.log("header ",headers);
     // Constructing URL with query parameters
     const url = new URL(ENDPOINT.value);
 const QUERY = QUERYSTRING.value;
