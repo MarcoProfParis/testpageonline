@@ -1,4 +1,5 @@
 window.function = async function(APIKEY,ENDPOINT, QUERYSTRING) {
+if (QUERYSTRING.value === undefined) return "12En attente de QUERYSTRING";
     const headers = {
         "X-CMC_PRO_API_KEY": APIKEY.value,
         "Accept": "application/json"
