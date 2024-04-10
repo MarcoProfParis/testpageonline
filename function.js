@@ -1,3 +1,4 @@
 window.function = async function(key1,json) {
-return key1.value;
+let json = JSON.parse(json.value);
+return json.key.value;
 };
