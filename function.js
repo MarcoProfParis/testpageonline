@@ -25,7 +25,7 @@ window.function = async function(key1, jsonstring) {
             throw new Error('Invalid JSON in response');
         }
         console.log("reponse:", data);
-        return key1.value;
+        return data;
     } catch (error) {
         console.error('Error:', error);
         throw error;
