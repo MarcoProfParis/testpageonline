@@ -1,6 +1,27 @@
+window.function = async function(APIKEY,ENDPOINT, QUERYSTRING) {
+    const headers = {
+        "X-CMC_PRO_API_KEY": APIKEY.value,
+        "Accept": "application/json"
+    };
+
+    const requestOptions = {
+        method: 'GET',
+        headers: headers,
+        redirect: 'follow'
+    };
+
+    try {
+        const response = await fetch('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC', requestOptions);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error; // You may handle errors differently as per your requirement
+    }
+};
 
 
-window.function = async function(APIKEY, ENDPOINT, QUERYSTRING) {
+window.function2 = async function2(APIKEY, ENDPOINT, QUERYSTRING) {
 if (QUERYSTRING.value === undefined) return "12En attente de QUERYSTRING";
 var headers = new Headers();
 let apikeyvalue = APIKEY.value;
