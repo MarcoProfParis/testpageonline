@@ -12,7 +12,7 @@
     <script src="driver.js"></script>
     <script>
       async function processData() {
-        const jsonInput = document.getElementById("jsonInput").value;
+        const jsonInput = JSON.parse(document.getElementById("jsonInput").value);
         if (!jsonInput.trim()) {
           document.getElementById("result").innerText = "En attente json...";
           return;
