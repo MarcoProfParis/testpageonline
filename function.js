@@ -12,7 +12,7 @@ window.function = async function(key1, jsonstring) {
     console.log("apiUrl:", apiUrl);
     console.log("requestOptions:", requestOptions);
     try {
-        const response = await fetch(apiUrl, requestOptions);
+        const response = await fetch(apiUrl);
         console.log("response1:", response);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
