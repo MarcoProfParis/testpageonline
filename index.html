@@ -14,15 +14,16 @@
       async function processData() {
         const jsonInput = document.getElementById("jsonInput").value;
         if (!jsonInput.trim()) {
-          document.getElementById("result").innerText = "En attente json...";
+          document.getElementById("result").innerText = "2En attente json...";
           return;
         }
         try {
-          const result = await window.function('key1', { value: jsonInput });
+          const json = JSON.parse(jsonInput);
+          const result = await window.function('key1', { value: json });
           document.getElementById("result").innerText = result;
         } catch (error) {
           console.error("Error:", error);
-          document.getElementById("result").innerText = "Error fetching data";
+          document.getElementById("result").innerText = "Error parsing JSON";
         }
       }
     </script>
