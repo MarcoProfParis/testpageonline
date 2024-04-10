@@ -8,9 +8,12 @@ window.function = async function(key1, jsonstring) {
         throw new Error('Invalid JSON');
     }
     const apiUrl = json.url;
-    const requestOptions = {method: 'GET', mode: 'no-cors'};
+    const requestOptions = {mode: 'no-cors'};
+    console.log("apiUrl:", apiUrl);
+    console.log("requestOptions:", requestOptions);
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl,requestOptions);
+        console.log("response1:", response);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
