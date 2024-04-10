@@ -7,8 +7,8 @@ fetch(apiUrl)
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-   console.log("response",response.json());
-return json.key
+   console.log('réponse:',response.json());
+return json.key;
   })
   .then(data => {
     console.log(data);
