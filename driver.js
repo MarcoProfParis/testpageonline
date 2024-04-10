@@ -1,40 +1,27 @@
 window.addEventListener("message", async function(event) {
-    const { origin, data: { key1, jsonstring } } = event.data; // Extracting key1 and jsonstring from event data
+  const { origin, data: { key, params } } = event;
 
-    let result;
-    let error;
+  let result;
+  let error;
+  try {
+    result = await window.function(...params);
+  } catch (e) {
+    result = undefined;
     try {
-        result = await window.function(key1, jsonstring); // Passing key1 and jsonstring to window.function
+      error = e.toString();
     } catch (e) {
-        result = undefined;
-        try {
-            error = e.toString();
-        } catch (e) {
-            error = "Exception can't be stringified.";
-        }
+      error = "Exception can't be stringified.";
     }
+  }
 
-    const response = { key: key1 }; // Setting key to key1
-    if (result !== undefined) {
-        response.result = { value: result };
-    }
-    if (error !== undefined) {
-        response.error = error;
-    }
+  const response = { key };
+  if (result !== undefined) {
+    // FIXME: Remove `type` once that's in staging
+    response.result = { value: result };
+  }
+  if (error !== undefined) {
+    response.error = error;
+  }
 
-    // Displaying the result in the HTML
-    const resultElement = document.getElementById("result");
-    if (result !== undefined) {
-        resultElement.textContent = JSON.stringify(result, null, 2);
-    } else if (error !== undefined) {
-        resultElement.textContent = "Error: " + error;
-    }
-});
-
-// Trigger function call when the page loads
-window.addEventListener("load", function() {
-    const key1 = document.getElementById("key1").value;
-    const jsonstring = document.getElementById("jsonstring").value;
-
-    window.parent.postMessage({ key1, jsonstring }, "*");
+  event.source.postMessage(response, "*");
 });
