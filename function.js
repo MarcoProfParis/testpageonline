@@ -8,7 +8,9 @@ const requestOptions = {method: 'GET',mode: 'no-cors'};
 // const data = await response.json();
 try {
     const response = await fetch(apiUrl, requestOptions);
-    const data = await response.json();
+    const text = await response.text(); // Get the response as text
+    console.log("Response text:", text);
+    const data = JSON.parse(text); // Parse the text as JSON
     console.log("reponse:", data);
     return key1.value;
 } catch (error) {
