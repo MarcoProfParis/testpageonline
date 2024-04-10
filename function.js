@@ -1,5 +1,5 @@
 window.function = async function(APIKEY,ENDPOINT, QUERYSTRING) {
-if (QUERYSTRING.value === undefined) return "12En attente de QUERYSTRING";
+if (QUERYSTRING.value === undefined) return "1En attente de QUERYSTRING";
     const headers = {
         "X-CMC_PRO_API_KEY": APIKEY.value,
         "Accept": "application/json"
@@ -14,7 +14,7 @@ if (QUERYSTRING.value === undefined) return "12En attente de QUERYSTRING";
     try {
         const response = await fetch('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC', requestOptions);
         const data = await response.json();
-        return data;
+        return APIKEY.value;
     } catch (error) {
         console.error('Error:', error);
         throw error; // You may handle errors differently as per your requirement
