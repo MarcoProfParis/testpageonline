@@ -1,8 +1,8 @@
 window.function = async function(key1,jsonstring) {
-if (jsonstring.value === undefined) return "2En attente json...";
-let json = JSON.parse(jsonstring);
+if (jsonstring.value === undefined) return "En attente json...";
 
-return json.key;
+
+return key1;
 
 };
 
