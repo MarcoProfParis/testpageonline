@@ -6,7 +6,7 @@ window.function = async function(key1, jsonstring) {
     console.log("apiUrl:", apiUrl);
     console.log("requestOptions:", requestOptions);
     try {
-        let delivery = await api(apiUrl); // await here
+        let delivery = await api(apiUrl,requestOptions); // await here
         console.log("delivery:", delivery);
         return delivery;
     } catch (error) {
@@ -15,9 +15,9 @@ window.function = async function(key1, jsonstring) {
     }
 };
 
-async function api(apiUrl){ // async keyword here
+async function api(apiUrl,requestOptions){ // async keyword here
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl,requestOptions);
         console.log("response:", response);
         const text = await response.text();
         console.log("text:", text);
