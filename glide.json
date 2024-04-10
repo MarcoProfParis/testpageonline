@@ -5,18 +5,13 @@
   "author": "Marc Olivier Reula",
   "params": [
     {
-      "name": "APIKEY",
-      "displayName": "API KEY",
+      "name": "key1",
+      "displayName": "key1",
       "type": "string"
     },
     {
-      "name": "ENDPOINT",
-      "displayName": "ENDPOINT",
-      "type": "string"
-    },
-    {
-      "name": "QUERYSTRING",
-      "displayName": "QUERYSTRING",
+      "name": "json",
+      "displayName": "json",
       "type": "string"
     }
   ],
