@@ -4,8 +4,7 @@ let json = JSON.parse(jsonstring.value);
 const apiUrl = json.url;
 const requestOptions = {method: 'GET',mode: 'no-cors'};
 const reponse = await fetch(apiUrl,requestOptions);
-console.log("reponse:", reponse);
-console.log("reponse:", reponse.json());
+console.log("reponse:", JSON.stringify(reponse));
 return key1.value;
 
 };
