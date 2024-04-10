@@ -4,7 +4,7 @@ window.fetchData = async function() {
         var apiUrl = document.getElementById("apiUrl").value;
 const requestOptions = { mode: 'no-cors' };
         // Fetch data from the API
-        const response = await fetch(apiUrl,requestOptions);
+        const response = await fetch(apiUrl);
         
         if (!response.ok) {
             throw new Error('Network response was not ok');
