@@ -14,12 +14,11 @@
       async function processData() {
         const jsonInput = document.getElementById("jsonInput").value;
         if (!jsonInput.trim()) {
-          document.getElementById("result").innerText = "2En attente json...";
+          document.getElementById("result").innerText = "En attente json...";
           return;
         }
         try {
-          const json = JSON.parse(jsonInput);
-          const result = await window.function('key1', { value: json });
+          const result = await window.function('key1', { value: jsonInput });
           document.getElementById("result").innerText = result;
         } catch (error) {
           console.error("Error:", error);
