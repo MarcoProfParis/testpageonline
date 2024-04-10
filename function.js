@@ -1,5 +1,5 @@
 window.function = async function(key1,jsonstring) {
-if (jsonstring.value === undefined) return "6En attente json...";
+if (jsonstring.value === undefined) return "En attente json...";
 let json = JSON.parse(jsonstring);
 const apiUrl = 'https://cex.io/api/ticker/BTC/USD';
 fetch(apiUrl)
