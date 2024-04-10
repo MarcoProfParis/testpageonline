@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Glide Yes-Code</title>
-</head>
-<body>
-    <label for="key1">Key 1:</label>
-    <input type="text" id="key1" value="example_key">
-    <br>
-    <label for="jsonstring">JSON String:</label>
-    <textarea id="jsonstring">{"url": "https://example.com/api"}</textarea>
-    <br>
+  </head>
+  <body>
+    <input type="text" id="jsonInput" placeholder="Enter JSON data...">
+    <button onclick="processData()">Process</button>
     <div id="result"></div>
-
     <script src="function.js"></script>
     <script src="driver.js"></script>
-</body>
+    <script>
+      async function processData() {
+        const jsonInput = document.getElementById("jsonInput").value;
+        if (!jsonInput.trim()) {
+          document.getElementById("result").innerText = "En attente json...";
+          return;
+        }
+        try {
+          const result = await window.function('key1', { value: jsonInput });
+          document.getElementById("result").innerText = result;
+        } catch (error) {
+          console.error("Error:", error);
+          document.getElementById("result").innerText = "Error fetching data";
+        }
+      }
+    </script>
+  </body>
 </html>
