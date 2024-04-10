@@ -13,9 +13,9 @@ window.fetchData = async function() {
         const data = await response.json();
 
         // Display data on the webpage
-        document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+        document.getElementById("result").textContent = JSON.stringify(data, null, 2);
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        document.getElementById("result").innerText = "Error fetching data. Please check the URL and try again.";
+        document.getElementById("result").textContent = "Error fetching data. Please check the URL and try again.";
     }
 }
