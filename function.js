@@ -10,7 +10,7 @@ window.function = async function(key1, jsonstring) {
     const apiUrl = json.url;
     const requestOptions = {method: 'GET', mode: 'no-cors'};
     try {
-        const response = await fetch(apiUrl, requestOptions);
+        const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
