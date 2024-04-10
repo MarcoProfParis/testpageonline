@@ -1,11 +1,11 @@
 window.function = async function(key1,jsonstring) {
-if (jsonstring.value === undefined) return "3En attente json...";
+if (jsonstring.value === undefined) return "4En attente json...";
 let json = JSON.parse(jsonstring);
 const apiUrl = 'https://cex.io/api/ticker/BTC/USD';
 const requestOptions = {
   method: 'GET'
 };
-const reponse = fetch(apiUrl,requestOptions);
+const reponse = await fetch(apiUrl,requestOptions);
 console.log("reponse",reponse);
 return json.key;
 
