@@ -1,15 +1,17 @@
 window.function = async function(key1, jsonstring) {
-    if (jsonstring.value === undefined || jsonstring.value === '') return "En attente json...";
-    let json = JSON.parse(jsonstring.value);
-    const apiUrl = json.url;
-    
+    if (!jsonstring || !jsonstring.value) return "En attente json...";
+
     try {
-       const response = await fetch(apiUrl);
+        let json = JSON.parse(jsonstring.value);
+        if (!json.url) return "JSON is missing 'url' property";
+        
+        const apiUrl = json.url;
+        const response = await fetch(apiUrl);
         const text = await response.text();
-let data = JSON.parse(text);
-       return data.delivery;
+        let data = JSON.parse(text);
+        return data.delivery;
     } catch (error) {
         console.error("Error:", error);
-        return "Error fetching data"; // Handle error accordingly
+        return "Error parsing JSON"; // Handle error accordingly
     }
 };
