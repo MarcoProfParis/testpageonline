@@ -1,6 +1,13 @@
 window.function = async function(key1, jsonstring) {
-    if (jsonstring.value === undefined || jsonstring.value === '') return "En attente json...";
-    let json = JSON.parse(jsonstring.value);
+    if (!jsonstring) return "En attente json..."; // Check if JSON string is provided
+    let json;
+    try {
+        json = JSON.parse(jsonstring);
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+        return "Error parsing JSON"; // Handle error accordingly
+    }
+    
     const apiUrl = json.url;
     const requestOptions = { mode: 'no-cors' };
     console.log("apiUrl:", apiUrl);
