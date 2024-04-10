@@ -1,6 +1,6 @@
 window.function = async function(key1,json) {
-let json = JSON.parse(json.value);
-console.log("json parsed",json.value);
+let jsont = JSON.parse(json.value);
+console.log("json parsed",jsont);
 return key1.value;
 };
 
