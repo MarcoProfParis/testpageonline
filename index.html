@@ -4,15 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>API Data Fetcher</title>
+<script>
+    function fetchData() {
+        // URL to fetch data from
+        var apiUrl = document.getElementById("apiUrl").value;
+        
+        // Fetch data from the API
+        fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Display data on the webpage
+            document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            document.getElementById("result").innerText = "Error fetching data. Please check the URL and try again.";
+        });
+    }
+</script>
 </head>
 <body>
     <h1>API Data Fetcher</h1>
     <p>Enter API URL:</p>
     <input type="text" id="apiUrl" value="https://cex.io/api/ticker/BTC/USD" style="width: 80%;">
-    <button onclick="window.fetchData()">Fetch Data</button>
+    <button onclick="fetchData()">Fetch Data</button>
     <div id="result" style="margin-top: 20px; white-space: pre;"></div>
-
-    <!-- Link to the JavaScript file -->
-    <script src="fetchData.js"></script>
 </body>
 </html>
