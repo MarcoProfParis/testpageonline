@@ -1,17 +1,21 @@
-window.function = async function(key1, jsonstring) {
-    if (!jsonstring || !jsonstring.value) return "En attente json...";
-
+window.fetchData = async function() {
     try {
-        let json = JSON.parse(jsonstring.value);
-        if (!json.url) return "JSON is missing 'url' property";
-        
-        const apiUrl = json.url;
+        // URL to fetch data from
+        var apiUrl = document.getElementById("apiUrl").value;
+
+        // Fetch data from the API
         const response = await fetch(apiUrl);
-        const text = await response.text();
-        let data = JSON.parse(text);
-        return data.delivery;
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        // Display data on the webpage
+        document.getElementById("result").innerText = JSON.stringify(data, null, 2);
     } catch (error) {
-        console.error("Error:", error);
-        return "Error parsing JSON"; // Handle error accordingly
+        console.error('There was a problem with the fetch operation:', error);
+        document.getElementById("result").innerText = "Error fetching data. Please check the URL and try again.";
     }
-};
+}
