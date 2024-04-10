@@ -6,22 +6,17 @@ window.function = async function(key1, jsonstring) {
     console.log("apiUrl:", apiUrl);
     console.log("requestOptions:", requestOptions);
     try {
-        const response = await fetch(apiUrl);
-        console.log("response1:", response);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const text = await response.text();
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch {
-            throw new Error('Invalid JSON in response');
-        }
-        console.log("reponse:", data);
-        return data.delivery;
-    } catch (error) {
-        console.error('Error:', error);
-        throw error;
+    let delivery = api(apiUrl);
+    console.log("delivery:", delivery);
+    return delivery;
     }
 };
+
+function api(apiUrl){
+    const response = await fetch(apiUrl);
+        console.log("response1:", response);
+       const text = await response.text();
+       console.log("text:", text);
+        let data = JSON.parse(text);
+        return data.delivery;
+}
