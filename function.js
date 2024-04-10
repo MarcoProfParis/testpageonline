@@ -11,7 +11,16 @@ window.function = async function(key1, jsonstring) {
     const requestOptions = {method: 'GET', mode: 'no-cors'};
     try {
         const response = await fetch(apiUrl, requestOptions);
-        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const text = await response.text();
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch {
+            throw new Error('Invalid JSON in response');
+        }
         console.log("reponse:", data);
         return key1.value;
     } catch (error) {
