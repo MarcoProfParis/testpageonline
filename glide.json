@@ -1,7 +1,7 @@
 [{
   "kind": "column",
-  "name": "coin market",
-  "description": "coin market",
+  "name": "put name",
+  "description": "put description",
   "author": "Marc Olivier Reula",
   "params": [
     {
