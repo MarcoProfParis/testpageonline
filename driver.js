@@ -16,19 +16,25 @@ window.addEventListener("message", async function(event) {
 
     const response = { key: key1 }; // Setting key to key1
     if (result !== undefined) {
-        // FIXME: Remove `type` once that's in staging
         response.result = { value: result };
     }
     if (error !== undefined) {
         response.error = error;
     }
 
-    event.source.postMessage(response, "*");
+    // Displaying the result in the HTML
+    const resultElement = document.getElementById("result");
+    if (result !== undefined) {
+        resultElement.textContent = JSON.stringify(result, null, 2);
+    } else if (error !== undefined) {
+        resultElement.textContent = "Error: " + error;
+    }
 });
 
-function sendMessage() {
+// Trigger function call when the page loads
+window.addEventListener("load", function() {
     const key1 = document.getElementById("key1").value;
     const jsonstring = document.getElementById("jsonstring").value;
 
     window.parent.postMessage({ key1, jsonstring }, "*");
-}
+});
