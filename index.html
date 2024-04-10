@@ -6,12 +6,12 @@
 </head>
 <body>
     <label for="key1">Key 1:</label>
-    <input type="text" id="key1">
+    <input type="text" id="key1" value="example_key">
     <br>
     <label for="jsonstring">JSON String:</label>
-    <textarea id="jsonstring"></textarea>
+    <textarea id="jsonstring">{"url": "https://example.com/api"}</textarea>
     <br>
-    <button onclick="sendMessage()">Send Message</button>
+    <div id="result"></div>
 
     <script src="function.js"></script>
     <script src="driver.js"></script>
