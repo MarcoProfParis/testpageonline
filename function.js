@@ -1,5 +1,5 @@
 window.function = async function(key1,json) {
-if (json === undefined) {
+if (json.value === undefined) {
   return "undefined";
 };
 console.log("json raw",${json.value});
